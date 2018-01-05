@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="mysql.properties"></properties>
+    <typeAliases>
+        <typeAlias type="com.jing.VO.User" alias="User"/>
+        <typeAlias type="com.jing.VO.Product"  alias="Product"/>
+        <typeAlias type="com.jing.VO.Sale" alias="Sale"/>
+        <typeAlias type="com.jing.VO.BuyList" alias="BuyList"/>
+        <typeAlias type="com.jing.VO.profit" alias="Profit"/>
+         <typeAlias type="com.jing.VO.date" alias="mydate"/>
+        <typeAlias type="com.jing.VO.userPro" alias="userPro"/>
+    </typeAliases>
+
+    <mappers>
+        <mapper resource="com/jing/mapper/SelProd.xml"/>
+        <mapper resource="com/jing/mapper/SelSale.xml"/>
+        <mapper resource="com/jing/mapper/SelUser.xml"/>
+        <mapper resource="com/jing/mapper/GetCustomerList.xml"/>
+        <mapper resource="com/jing/mapper/GetProductList.xml"/>
+        <mapper resource="com/jing/mapper/GetTopProfit.xml"/>
+    </mappers>
+</configuration>

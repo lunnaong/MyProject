@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jing.dao.ISelSale" >
+    <resultMap id="simpleSale" type="Sale"/>
+    <select id="selSale" resultMap="simpleSale" parameterType="Integer">
+        select * from sale
+        where UserId = #{id}
+        order by UserId;
+    </select>
+
+    <insert id="addSale" parameterType="Sale">
+        insert into sale(SaleDate,UserId,GoodsId,prices,number)
+        values(#{SaleDate},#{UserId},#{GoodsId},#{prices},#{number});
+    </insert>
+</mapper>

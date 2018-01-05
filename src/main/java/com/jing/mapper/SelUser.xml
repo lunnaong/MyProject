@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jing.dao.ISelUser" >
+    <select id="selUser" resultType="User" parameterType="Integer">
+        select * from user
+        where id = #{id}
+        order by id;
+    </select>
+
+    <select id="allUser" resultType="User" parameterType="Integer">
+        select * from user;
+    </select>
+
+    <select id="conditionalSel" resultType="User" parameterType="User">
+        select id , name,address,birthday,sex  from user
+        <where>
+            <if test = " id != null and id != ''">
+                cast(id as CHAR ) like "%" '${id}' "%"
+            </if>
+
+            <if test = "name != null">
+                AND name like "%"#{name,jdbcType=VARCHAR}"%"
+            </if>
+            <if test = "address != null ">
+                AND address = #{address,jdbcType=VARCHAR}
+            </if>
+            <if test = "birthday != null">
+                AND birthday = #{birthday,jdbcType=DATE}
+            </if>
+            <if test = "sex != null">
+                AND sex = #{sex,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addUser"  parameterType="User">
+        insert into user(id,name,address,birthday,sex) values(#{id},#{name},#{address},#{birthday},#{sex});
+    </insert>
+
+    <update id="updateUser"  parameterType="User" >
+        update user set name=#{name},address=#{address},birthday=#{birthday},sex=#{sex}
+        where id = #{id};
+    </update>
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from user where id = #{id};
+    </delete>
+</mapper>

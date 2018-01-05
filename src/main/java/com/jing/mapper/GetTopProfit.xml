@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jing.dao.ITopProfit" >
+    <select id="newTopProfit" resultType="java.lang.Double" >
+   select (sale.prices-product.price)*number  profit from product
+    left join sale on sale.GoodsId = product.id
+    left join user on user.id = sale.UserId
+    where month(sale.SaleDate) =(
+    select distinct month(SaleDate) from sale
+    order by SaleDate desc
+    limit 1
+    )
+    order by profit desc
+    limit 10;
+    ;
+    </select>
+
+    <select id="secondTopProfit" resultType="java.lang.Double" >
+    select (sale.prices-product.price)*number  profit from product
+    left join sale on sale.GoodsId = product.id
+    left join user on user.id = sale.UserId
+    where month(sale.SaleDate) =(
+    select distinct month(SaleDate) from sale
+    order by SaleDate desc
+    limit 1,1
+    )
+    order by profit desc
+    limit 10;
+;
+    </select>
+    <select id="newDate" resultType="mydate">
+        select distinct year(SaleDate) year,month(SaleDate) month from sale
+        order by year(SaleDate) desc,month(SaleDate) desc
+        limit 1;
+    </select>
+    <select id="secondDate" resultType="mydate">
+         select distinct year(SaleDate) year,month(SaleDate) month from sale
+        order by year(SaleDate) desc,month(SaleDate) desc
+        limit 1,1;
+    </select>
+</mapper>

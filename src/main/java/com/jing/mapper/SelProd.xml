@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jing.dao.ISelProd" >
+    <resultMap id="simpleProduct" type="Product"/>
+    <select id="selProd" resultMap="simpleProduct" parameterType="Integer">
+        select * from product
+        where id = #{id}
+        order by id;
+    </select>
+
+    <insert id="addProd" parameterType="Product">
+        insert into product(id,BookName,species,price,unit)
+         values(#{id},#{BookName},#{species},#{price},#{unit});
+    </insert>
+</mapper>

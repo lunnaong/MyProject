@@ -1,0 +1,8 @@
+.ui-dialog{
+    height: auto;
+    width: 500px;
+    top: 180px;
+    left: 513px;
+    display: block;
+    z-index: 99;
+}
