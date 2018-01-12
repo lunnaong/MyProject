@@ -8,19 +8,19 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>jqgrid</title>
-    <link rel="stylesheet" type="text/css" href="/upload/system/css/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="/upload/system/css/ui.jqgrid.css" >
-    <link rel="stylesheet" type="text/css" media="screen" href="/upload/system/themes/blitzer/jquery-ui-1.8.20.custom.css">
-    <link rel="stylesheet" type="text/css" href="/upload/system/themes/hot-sneaks/jquery.ui.theme.css">
-    <link rel="stylesheet" type="text/css" href="/upload/system/css/BeatPicker.min.css">
-   <%-- <link rel="stylesheet" type="text/css" href="/upload/System/css/jquery.ui.core.css">--%>
+    <link rel="stylesheet" type="text/css" href="/myproject/system/css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="/myproject/system/css/ui.jqgrid.css" >
+    <link rel="stylesheet" type="text/css" media="screen" href="/myproject/system/themes/blitzer/jquery-ui-1.8.20.custom.css">
+    <link rel="stylesheet" type="text/css" href="/myproject/system/themes/humanity/jquery.ui.theme.css">
+    <link rel="stylesheet" type="text/css" href="/myproject/system/css/BeatPicker.min.css">
+   <%-- <link rel="stylesheet" type="text/css" href="/myproject/System/css/jquery.ui.core.css">--%>
 
-    <script src="/upload/system/js/jquery-1.11.0.min.js"></script>
-    <script src="/upload/system/js/jquery.jqGrid.js"></script>
-    <script src="/upload/system/js/jquery-ui.min.js"></script>
-    <script src="/upload/system/js/grid.locale-cn.js"></script>
-    <script src="/upload/system/js/jquery.tablednd.js"></script>
-    <script src="/upload/system/js/BeatPicker.min.js"></script>
+    <script src="/myproject/system/js/jquery-1.11.0.min.js"></script>
+    <script src="/myproject/system/js/jquery.jqGrid.js"></script>
+    <script src="/myproject/system/js/jquery-ui.min.js"></script>
+    <script src="/myproject/system/js/grid.locale-cn.js"></script>
+    <script src="/myproject/system/js/jquery.tablednd.js"></script>
+    <script src="/myproject/system/js/BeatPicker.min.js"></script>
     <style type="text/css">
 
         #Modify_id,#Modify_name,#Modify_address,#Modify_sex,#Modify_birthday,#ADD_id,#ADD_name,#ADD_address,#date1,#ADD_sex{
@@ -56,7 +56,7 @@
         if(id == '' && name == ''&& birthday == ''){
             $("#JqGrid-table").jqGrid("setGridParam",
                 {
-                    url: "http://localhost:8081/upload/User2/selAll.do",
+                    url: "http://localhost:8081/myproject/User2/selAll.do",
                     page: 1,
                     datatype: "json",
                     jsonReader :{
@@ -76,7 +76,7 @@
         }
        // alert("r="+r);
         $.ajax({
-            url: "http://localhost:8081/upload/User2/conditionalSel.do",
+            url: "http://localhost:8081/myproject/User2/conditionalSel.do",
             page: 1,
             datatype: "json",
             data: {id:id,name:name,birthday:birthday},
@@ -86,7 +86,7 @@
                 //alert(name);
                $("#JqGrid-table").jqGrid("setGridParam",
                 {
-                    url: "http://localhost:8081/upload/User2/conditionalSel.do",
+                    url: "http://localhost:8081/myproject/User2/conditionalSel.do",
                     page: 1,
                     mytype: "post",
                     datatype: "json",
@@ -160,7 +160,7 @@
                     }
 
                     $.ajax({
-                        url: "http://localhost:8081/upload/User2/insertUser.do",
+                        url: "http://localhost:8081/myproject/User2/insertUser.do",
                         type: "GET",
                         data: {
                             id: id, name: name, address: address,
@@ -176,7 +176,7 @@
                            }
                             $("#JqGrid-table").jqGrid("setGridParam",
                                 {
-                                    url: "http://localhost:8081/upload/User2/selAll.do",
+                                    url: "http://localhost:8081/myproject/User2/selAll.do",
                                     page: 1,
                                     datatype: "json",
                                     jsonReader :{
@@ -222,13 +222,13 @@
                "确定": function () {
                    $(this).dialog("close");
                    $.ajax({
-                       url: "http://localhost:8081/upload/User2/deleteUser.do",
+                       url: "http://localhost:8081/myproject/User2/deleteUser.do",
                        type: "post",
                        data: {id: id},
                        success: function (message) {
                            $("#JqGrid-table").jqGrid("setGridParam",
                                {
-                                   url: "http://localhost:8081/upload/User2/selAll.do",
+                                   url: "http://localhost:8081/myproject/User2/selAll.do",
                                    page: 1,
                                    datatype: "json",
                                    jsonReader :{
@@ -311,7 +311,7 @@
                         return false;
                     }
                     $.ajax({
-                        url: "http://localhost:8081/upload/User2/updateUser.do",
+                        url: "http://localhost:8081/myproject/User2/updateUser.do",
                         type: "GET",
                         data: {
                             id: id, name: name, address: address,
@@ -320,7 +320,7 @@
                         success: function (message) {
                             $("#JqGrid-table").jqGrid("setGridParam",
                                 {
-                                    url: "http://localhost:8081/upload/User2/selAll.do",
+                                    url: "http://localhost:8081/myproject/User2/selAll.do",
                                     page: 1,
                                     datatype: "json"
                                     /*jsonReader :{
@@ -365,8 +365,8 @@
 
 <div class="main" id="main">
     <table id="JqGrid-table" style="z-index: 1"></table>
-    <div id="JqGrid-pager"style="z-index: 1"></div>
-    <form method="post"id="ModifyEmployeeInfo" title="修改信息"  style="display:none;" style="width: 350px; margin: 0px; z-index: 9999;position:relative;">
+    <div id="JqGrid-pager" style="z-index: 1"></div>
+    <form method="post" id="ModifyEmployeeInfo" title="修改信息"  style="display:none;" style="width: 350px; margin: 0px; z-index: 9999;position:relative;">
         <fieldset>
             <legend>Modify Data</legend>
             <table style="z-index:1;">
@@ -453,7 +453,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#JqGrid-table").jqGrid({
-                url: "http://localhost:8081/upload/User2/selAll.do",
+                url: "http://localhost:8081/myproject/User2/selAll.do",
                 //editurl: 'clientArray',
                 datatype: "json",
                 mtype: "Get",
